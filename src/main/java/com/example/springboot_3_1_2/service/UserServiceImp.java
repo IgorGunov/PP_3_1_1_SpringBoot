@@ -1,9 +1,9 @@
 package com.example.springboot_3_1_2.service;
 import com.example.springboot_3_1_2.dao.UserDao;
 import com.example.springboot_3_1_2.model.User;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
@@ -18,13 +18,13 @@ public class UserServiceImp implements UserService {
         this.dao = dao;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public List<User> getAll() {
         return dao.getAll();
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public User get(int id) {
         return dao.get(id);
